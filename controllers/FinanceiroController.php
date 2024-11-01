@@ -8,7 +8,7 @@ class FinanceiroController{
     private  $financeiroModel;
 
     public function index(){
-
+        echo "método index() foi chamado";
     }
 
     public function criar(){
