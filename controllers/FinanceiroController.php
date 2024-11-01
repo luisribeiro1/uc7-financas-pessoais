@@ -1,13 +1,21 @@
 <?php
 
+require_once "models/FinanceiroModel.php";
+
 class FinanceiroController {
     
     private $baseUrl = "http://localhost/uc7/financas/";
     private $acao;
     private $financeiroModel;
 
+    public function __construct() {
+        $this->financeiroModel = new Financeiro();
+      }
+
     public function index(){
-        echo "Método index() foi chamado.";    
+        $registros_financeiros = $this->financeiroModel->getAll();
+        $baseUrl = $this->baseUrl;
+        require "views/FinanceiroList.php";
     }
 
     public function criar(){
