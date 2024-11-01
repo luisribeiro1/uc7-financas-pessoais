@@ -1,24 +1,23 @@
 <?php
 session_start();
 
-$endereco = trim($_SERVER['REQUEST_URI']);
+$endereco = trim(strtolower($_SERVER['REQUEST_URI']));
 
-$segmentos = str_replace("/atividade/financas/", "", $segmentos);
+$endereco = str_replace("/atividade/financas_pessoais/", "", $endereco);
 
-$segmentos = explode('/', $endereco, $segmentos);
+$segmentos = explode("/", $endereco);
 
-$controlador = isset($segmentos[0]) ? $segmentos[0] : $controlador = "financeiro";
-$metodo = isset($segmentos[1]) ? $segmentos[1] : $metodo = "index";
-$identificador = isset($segmentos[2]) ? $segmentos[2] : $identificador = null;
-
+$controlador = isset($segmentos[0]) ? $segmentos[0] : "financas";
+$metodo = isset($segmentos[1]) ? $segmentos[1] : "index";
+$identificador = isset($segmentos[2]) ? $segmentos[2] :  null;
 
 switch($controlador){
     case "financas":
         require "controllers/FinanceiroController.php";
-        $controller = new FinanceiroController
+        $controller = new FinanceiroController();
         break;
     default: 
-    echo "Pagina não encontrada";
+    echo "controlador $controlador , metodo $metodo, identificador $identificador";
 }
 
 if($identificador){
