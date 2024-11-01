@@ -18,7 +18,7 @@ $metodo = isset($segmentos[1]) ? $segmentos[1] : "index";
 $identificador = isset($segmentos[2]) ? $segmentos[2] : null;
 
 switch($controlador){
-    case "financeiro"
+    case "financeiro":
     require "controllers/FinanceiroController.php";
     $controller = new FinanceiroController();
     break;

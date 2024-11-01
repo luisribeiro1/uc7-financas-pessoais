@@ -3,39 +3,39 @@
 
  class FinanceiroController{
 
-    private $url = "http://localhost/uc7/financeiro";
+    private $url = "http://localhost/uc7/financas-pessoais";
 
     private $financeiroModel;
 
-    public function __construct() {
-        $this->FinanceiroModel = new Financeiro();
+     public function __construct() {
+        $this->FinanceiroModel = new FinanceiroModel();
     }
     
 
     public function index(){
-        $transacoes = $this->FinaceiroModel->getAllFinanceiro();
+         $transacoes = $this->FinanceiroModel->getAll();
 
         $baseUrl = $this->url;
         require 'views/FinanceiroList.php';
-
+        echo "metodo index() foi chamado";
     }
     public function criar(){
         $baseUrl = $this->url;
-        echo "metodo criar() foi chamado"
+        echo "metodo criar() foi chamado";
 
-        $acao = "criar";
-        require 'views/FinanceiroForm.php';
+         $acao = "criar";
+         require 'views/FinanceiroForm.php';
     }
 
     public function atualizar(){
-        echo "metodo atualizar() foi chamado"
+        echo "metodo atualizar() foi chamado";
 
-        $acao = $_POST['acao'];
+        // $acao = $_POST['acao'];
     }
 
-    public function excluir() {
-        $this->FinanceiroModel->delete();
-        header("Location: ".$this->baseUrl."/financeiro");
-        echo "metodo excluir() foi chamado"
+    public function cancelar() {
+        // $this->FinanceiroModel->delete();
+        // header("Location: ".$this->baseUrl."/financeiro");
+        echo "metodo excluir() foi chamado";
     }
  }
