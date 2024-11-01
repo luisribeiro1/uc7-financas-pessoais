@@ -6,10 +6,10 @@ session_start();
 # Captar a URL redirecionada no .htaccess
 # trim limpa caracteres vazios no início e final do texto
 # strtolower() converte para minúsculos
-$requisicao = trim(strolower($_SERVER['REQUEST_URI']));
+$requisicao = trim(strtolower($_SERVER['REQUEST_URI']));
 
 # Substituir a parte da URL que não é útil
-$requisicao = str_replace("/uc7/financeiro/","",$requisicao);
+$requisicao = str_replace("/uc7/financas-pessoais/","",$requisicao);
 
 # Divide em partes, usando a barra como separador. Cria um array de indice
 $segmentos = explode("/",$requisicao);
@@ -28,7 +28,7 @@ $identificador = isset($segmentos[2])
     : null;
 
 switch($controlador){
-    case "financeiro" :
+    case "financeiro":
         require "controllers/FinanceiroController.php";
         $controller = new FinanceiroController();
         break;    
