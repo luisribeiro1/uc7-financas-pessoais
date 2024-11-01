@@ -1,6 +1,6 @@
 <?php
 
-require "models/FinanceiroModel.php";
+require "models/FinanceiroModels.php";
 
 class FinanceiroController {
     
@@ -8,8 +8,16 @@ class FinanceiroController {
     private $acao;
     private $financeiroModel;
 
+
+    public function __construct(){
+        $this->financeiroModel = new Financas();
+    }
+
     public function index(){
-        echo "metodo index() foi chamado";    
+        $registro_financeiros = $this->financeiroModel->getAll();
+        $baseUrl = $this->baseUrl;
+        require "views/FinanceiroList.php";
+
     }
 
     public function criar(){

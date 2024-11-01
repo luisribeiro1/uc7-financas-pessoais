@@ -19,7 +19,7 @@ class DataBase {
                     $usuario,
                     $senha
                 );
-                self::$conexa0->setAttribute(
+                self::$conexao->setAttribute(
                     PDO::ATTR_ERRMODE,
                     PDO::ERRMODE_EXCEPTION
                 );

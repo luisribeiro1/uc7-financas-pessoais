@@ -11,7 +11,7 @@ class Financas {
     }
     
 
-    public function get(){
+    public function getAll(){
         $result = $this->db->query("SELECT * FROM financeiro_pessoal");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
