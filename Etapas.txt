@@ -73,6 +73,7 @@ Métodos:
 - Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 4"
 
 
+
 ETAPA 5:
 - Em FinanceiroController.php:
 - Criar o método construtor que deverá instanciar a classe Financeiro no model
@@ -90,9 +91,20 @@ ETAPA 5:
 - Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 5"
 
 
+
 ETAPA 6:
+Em FinanceiroList, criar a rota /financeiro/cancelar/$id_financeiro em cada um dos lançamentos financeiros. 
+Em FinanceiroController, no método cancelar(), pegar o $id_financeiro e chamar o método cancelar() no model, passando o $id_financeiro como parâmetro. (veja o exemplo de aprovar avaliações que fizemos no projeto Restaurante MVC)
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 6"
 
 
+
+ETAPA 7:
+Em FinanceiroForm.php, criar o formulário para os campos da tabela do banco de dados. No action do form usar a rota /financeiro/atualizar
+Em FinanceiroController, no método atualizar, criar as variáveis para recuperar os campos do formulário.
+Chamar o método insert() do model e passar as variáveis como parâmetros 
+Redirecionar o usuário para a rota /financeiro
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 7"
 
 
 
@@ -107,7 +119,3 @@ git remote add origin https://github.com/luisribeiro1/uc7-financas-pessoais.git
 git push -u origin main nom_da_sua_branch
 
 
-
-
-
-ID: camelCase (meuId)
