@@ -4,7 +4,7 @@
 
     $requisicao = trim(strtolower($_SERVER['REQUEST_URI']));
 
-    $requisicao = str_replace("/uc7/financeiro","",$requisicao);
+    $requisicao = str_replace("/uc7/financeiro/","",$requisicao);
 
     $segmentos = explode("/",$requisicao);
 

@@ -3,7 +3,7 @@ CREATE DATABASE financeiro_pessoal;
 USE DATABASE financeiro_pessoal;
 
 CREATE TABLE financeiro_pessoal(
-    id_financeiro int auto_increment,
+    id_financeiro int primary key auto_increment,
     data date,
     descricao varchar(200),
     valor decimal(10,2),

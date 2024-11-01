@@ -4,9 +4,9 @@
 
     class FinanceiroController{
 
-        private $baseUrl = "https://localhost/uc7/financeiro/financeiro";
+        private $baseUrl = "https://localhost/uc7/financeiro";
 
-        private $financeiroModel
+        private $financeiroModel;
 
         # Método construtor:
         public function __construct(){
@@ -14,7 +14,7 @@
         }
         # Método Index:
         public function index(){
-            $listagem = $this->financeiroModel->getAllfinancas();
+            $registro_financeiros = $this->financeiroModel->getAll();
 
             $baseUrl = $this->baseUrl;
 
@@ -42,7 +42,7 @@
 
             echo "método editar() foi chamado ";
 
-            $acao = "editar"
+            $acao = "editar";
             require "views/FinanceiroForm.php";
         }
         # Método de aplicação no BD:
@@ -66,7 +66,7 @@
         }
         # Método Cancelar / excluir:
         public function cancelar($id){
-            $this->financeiroModel->delete($id);
+            $this->financeiroModel->cancelar($id);
             header("location: ".$this->baseUrl."/financeiro");
         }
 
