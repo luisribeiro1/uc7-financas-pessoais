@@ -16,6 +16,7 @@ switch ($controlador) {
     case "financeiro";
         require "controllers/FinanceiroController.php";
         $controller = new FinanceiroController();
+        $controller->index();
         break;
 
     default:
