@@ -27,7 +27,7 @@ class FinanceiroController{
     }
 
     public function editar($id){
-        $financeiro = $this->financeiroModel->getById($id)
+        $financeiro = $this->financeiroModel->getById($id);
         $data = $financeiro["data"];
         $descricao = $financeiro["descricao"];
         $valor = $financeiro["valor"];
