@@ -1,5 +1,7 @@
 <?php
 
+require "models/FinanceiroModel.php";
+
 class FinanceiroController {
     
     private $baseUrl = "http://localhost/uc7/financas";

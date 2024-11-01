@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $requisicao = trim(strtolower($_SERVER['REQUEST_URI']));
 
@@ -15,7 +16,6 @@ switch($controlador){
     case "financeiro":
         require "controllers/FinanceiroController.php";
         $controller = new FinanceiroController();
-        $controller->index();
         break;
 
     default:
@@ -25,10 +25,10 @@ switch($controlador){
 
 }
 
-// if($identificador){
+if($identificador){
 
-//     $controller->$metodo($identificador);
-// }else{
+    $controller->$metodo($identificador);
+}else{
 
-//     $controller->$metodo();
-// }
+    $controller->$metodo();
+}
