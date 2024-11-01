@@ -8,7 +8,7 @@ class FinanceiroController {
     # Criar a propriedade que receberá o endereço absoluto do site
     # este endereço será usado para compor as rotas
     # $url é uma propriedade pois está sendo criada no escopo da classe
-    private $url = "http://localhost/uc7/financeiro";
+    private $url = "http://localhost/uc7/financas_pessoais/";
 
 
     # Cria a propriedade que será usada nos métodos abaixo
