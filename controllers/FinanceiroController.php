@@ -28,8 +28,10 @@ class FinanceiroController {
         echo "metodo atualizar() foi chamado";    
     }
 
-    public function cancelar(){
-        echo "metodo cancelar() foi chamado";    
+    public function cancelar($id_financeiro){
+        
+        $this->financeiroModel->update($id_financeiro);
+        header ("location: " . $this->url . "/financeiro");
     }
 
 }

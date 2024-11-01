@@ -30,6 +30,7 @@ foreach($registro_financeiros as $registro){
             <td>$valor</td>
             <td>$deb_cred</td>
             <td>$status</td>
+                <td> <a href='[[base-url]]/financeiro/cancelar/$id_financeiro' class='btn btn-info'>Cancelar</a></td>
             </tr>
         </tbody>
     </table>
