@@ -13,15 +13,15 @@ class FinanceiroController{
     # Cria a propriedade que será usada nos métodos abaixo
     private $financeiroModel;
 
-    // public function __contruct(){
-    //     #instancia a classe Financeiro para obter os dados do model
-    //     $this->financeiroModel = new Financeiro();
-    // }
+    public function __contruct(){
+    #instancia a classe Financeiro para obter os dados do model
+     $this->financeiroModel = new Financeiro();
+    }
 
     public function index(){
         
         # Cria um objeto que receberá a lista de transações que o Model retornará
-        // $transacoes = $this->financeiroModel->getAllFinanceiro();
+        $transacoes = $this->financeiroModel->getAllFinanceiro();
 
         # Recebe o valor da propriedade $url e fica disponível para uso na view
         $baseUrl = $this->url;
@@ -50,10 +50,10 @@ class FinanceiroController{
 
     }
 
-    public function excluir() {
+    public function cancelar() {
         # Executa o método delete da classe de Model
         // $this->financeiroModel->delete();
-        echo "Método excluir() foi chamado";
+        echo "Método cancelar() foi chamado";
         # Redirecionar o usuário para a listagem de transações
         // header("location: ".$this->url."/financeiro");
     }
