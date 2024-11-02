@@ -12,20 +12,29 @@
         </tr>
     </thead>
     <tbody>
-        <?php if (!empty($registros_financeiros)): ?>
-            <?php foreach ($registros_financeiros as $registro): ?>
+        <?php if (!empty($transacoes)): ?>
+            <?php foreach ($transacoes as $registro): ?>
                 <tr>
+                    <!-- Exibe a data no formato d/m/Y -->
                     <td><?php echo date("d/m/Y", strtotime($registro['data'])); ?></td>
+                    
+                    <!-- Escapa a descrição para evitar problemas de segurança -->
                     <td><?php echo htmlspecialchars($registro['descricao']); ?></td>
+                    
+                    <!-- Condicional para mostrar valor como Débito ou Crédito -->
                     <td><?php echo ($registro['deb_cred'] === 'debito') ? number_format($registro['valor'], 2, ',', '.') : '-'; ?></td>
                     <td><?php echo ($registro['deb_cred'] === 'credito') ? number_format($registro['valor'], 2, ',', '.') : '-'; ?></td>
-                    <td><a href="[[base-url]]/financeiro/cancelar?id=<?php echo $registro['id_financeiro']; ?>" class="btn btn-danger btn-sm">X</a></td>
+                    
+                    <!-- Botão de Cancelar com link para a ação cancelar -->
+                    <td>
+                        <a href="[[base-url]]/financeiro/cancelar/<?php echo $registro['id_financeiro']; ?>" class="btn btn-danger btn-sm">X</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
+            <!-- Mensagem caso não haja registros -->
             <tr><td colspan="5">Nenhum registro encontrado.</td></tr>
         <?php endif; ?>
     </tbody>
 </table>
 
-<!-- $html = file_get_contents("views/financeiro-template.html"); -->
