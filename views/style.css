@@ -5,6 +5,7 @@
   --bg-th: #2E2B43;
   --text-color: #FFF;
   --text-secondary: #08A88A;
+<<<<<<< HEAD
   --deb-bg: #3e2c2c;
   --deb-text: #ec8a8a;
   --cred-bg: #313e2c;
@@ -18,6 +19,13 @@
 }
 
 .body {
+=======
+  --deb: #FF8585;
+  --cred: #2ECC71;
+}
+
+body {
+>>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
   background-color: var(--bg);
   color: var(--text-color);
   font-family: 'Poppins', 'sans-serif', 'sans';
@@ -65,7 +73,10 @@ a, i {
 }
 
 /* TABELA */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
 .tabela {
   background-color: var(--bg);
 }
@@ -94,11 +105,19 @@ th, td {
 }
 
 .deb {
+<<<<<<< HEAD
   color: var(--deb-text);
 }
 
 .cred {
   color: var(--text-secondary);
+=======
+  color: var(--deb);
+}
+
+.cred {
+  color: var(--cred);
+>>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
 }
 
 .tag {
@@ -109,18 +128,31 @@ th, td {
   padding-block: 0.8rem;
   padding-inline: 2.8rem;
   border-radius: 1.2rem;
+<<<<<<< HEAD
   font-weight: 600;
   background-color: var(--cred-bg);
   color: var(--cred-text);
+=======
+  font-weight: 700;
+  background-color: var(--cred);
+  color: var(--text-color);
+>>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
 }
 
 .status--pendente {
   padding-block: 0.8rem;
+<<<<<<< HEAD
   padding-inline: 1.2rem;
   border-radius: 1.2rem;
   font-weight: 600;
   background-color: var(--deb-bg);
   color: var(--deb-text);
+=======
+  border-radius: 1.2rem;
+  font-weight: 600;
+  background-color: var(--deb);
+  color: var(--text-color);
+>>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
 }
 
 /* PÁGINA 404 */
@@ -132,6 +164,7 @@ th, td {
 
 .erro{
   font-size: 18rem;
+<<<<<<< HEAD
 } 
 
 /* Notificação */
@@ -287,3 +320,6 @@ th, td {
       visibility: hidden;
   }
 }
+=======
+} 
+>>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)

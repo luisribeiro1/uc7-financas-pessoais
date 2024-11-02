@@ -5,6 +5,7 @@ import { defineElement } from '@lordicon/element';
 
 // define "lord-icon" custom element with default properties
 defineElement(lottie.loadAnimation);
+<<<<<<< HEAD
 
 // script da aba lateral
 const button = document.getElementById('btn-active');
@@ -26,3 +27,5 @@ toats.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
   navigationMenu.classList.add('hide');
 });
+=======
+>>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
