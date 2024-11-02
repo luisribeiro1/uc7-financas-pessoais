@@ -5,12 +5,11 @@ class FinanceiroModel{
     private $db;
 
     public function __construct(){
-        $db = DataBase::getConexao();
+        $this->db = DataBase::getConexao();
     }
 
     public function getAll(){
-        $sql = $this->db->prepare("SELECT * FROM financeiro_pessoal");
-        $sql->execute();
+        $sql = $this->db->query("SELECT * FROM financeiro_pessoal");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -22,11 +21,11 @@ class FinanceiroModel{
 
     public function insert($data, $descricao, $valor, $deb_cred, $status){
         $sql = $this->db->prepare("INSERT INTO financeiro_pessoal (data, descricao, valor,deb_cred, status) VALUES (?, ?, ?, ?, ?)");
-        return $sql->execute([$datam $descricao, $valor, $deb_cred, $status]);
+        return $sql->execute([$data, $descricao, $valor, $deb_cred, $status]);
     }
 
     public function cancelar($idFinanceiro, $status){
         $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status=? WHERE id_financeiro=?");
-        return $sql->execute([$status, $idFinanceiro])
+        return $sql->execute([$status, $idFinanceiro]);
     }
 }
