@@ -9,7 +9,7 @@ class Financeiro{
         $this->db = DataBase::getConexao();
     }
 
-    public function getAllFinancas(){
+    public function getAll(){
         $resultado = $this->db->query("SELECT * FROM financeiro_pessoal");
 
         return $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -22,8 +22,8 @@ class Financeiro{
     }
 
     public function cancelar($id){
-        $sql = $this->db->prepare("DELETE FROM financeiro_pessoal WHERE id_financeiro = ?");
-        return $sql->execute([$id]);
+        $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status=? WHERE id_financeiro=?");
+        return $sql->execute(['Cancelado', $id]);
     }
 
     public function insert($data,$descricao,$valor,$deb_cred,$status){

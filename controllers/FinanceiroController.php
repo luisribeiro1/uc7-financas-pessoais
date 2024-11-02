@@ -12,7 +12,7 @@ class FinanceiroController{
     }
 
     public function index(){
-        $lista_de_financas = $this->financeiroModel->getAllFinancas();
+        $lista_de_financas = $this->financeiroModel->getAll();
 
         $baseUrl = $this->baseUrl;
 
@@ -59,7 +59,7 @@ class FinanceiroController{
     }
 
     public function cancelar($id){
-        $this->financeiroModel->delete($id);
+        $this->financeiroModel->cancelar($id);
 
         header("location: ".$this->baseUrl."/financeiro");
     }

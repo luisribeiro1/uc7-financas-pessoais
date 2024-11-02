@@ -22,8 +22,8 @@ switch($controlador){
         break;
 }
 
-// if ($identificador){
-//     $controller->$metodo($identificador);
-// }else{
-//     $controller->$metodo();
-// }
+if ($identificador){
+    $controller->$metodo($identificador);
+}else{
+    $controller->$metodo();
+}
