@@ -62,12 +62,12 @@
                 $this->financeiroModel->insert($data,$descricao,$valor,$dep_cred,$status);
             }
             
-            header("location: ".$this->baseUrl."/financeiro");
+            header("location: ".$this->baseUrl."/financas");
         }
         # Método Cancelar / excluir:
         public function cancelar($id){
             $this->financeiroModel->cancelar($id);
-            header("location: ".$this->baseUrl."/financeiro");
+            header("location: ".$this->baseUrl."/financas");
         }
 
     }
