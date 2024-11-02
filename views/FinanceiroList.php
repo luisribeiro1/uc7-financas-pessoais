@@ -48,7 +48,7 @@
 
     $html = file_get_contents("views/financeiro-template.html");
 
-    $html = str_replace("[[base_url]]",$baseUrl,$html);
     $html = str_replace("[[lista]]",$lista,$html);
+    $html = str_replace("[[base_url]]",$baseUrl,$html);
 
     echo $html;

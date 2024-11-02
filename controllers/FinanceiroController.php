@@ -54,7 +54,7 @@
             // $status = $financa["status"];
             
             $acao = $_POST["acao"];
-
+            $baseUrl = $this->baseUrl;
             if($acao=="editar"){
                 $id = $_POST["idfinanca"];
                 $this->financeiroModel->update($id,$data,$descricao,$valor,$dep_cred,$status);
@@ -67,6 +67,7 @@
         # Método Cancelar / excluir:
         public function cancelar($id){
             $this->financeiroModel->cancelar($id);
+            $baseUrl = $this->baseUrl;
             header("location: ".$this->baseUrl."/financas");
         }
 
