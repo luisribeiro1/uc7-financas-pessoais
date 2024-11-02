@@ -16,8 +16,13 @@
          $transacoes = $this->FinanceiroModel->getAll();
 
         $baseUrl = $this->url;
-        require 'views/FinanceiroList.php';
-        echo "metodo index() foi chamado";
+        ob_start();
+        include 'views/FinanceiroList.php';
+        $conteudo = ob_get_clean();
+
+        // Carrega o template e substitui o marcador [[conteudo]]
+        $template = file_get_contents('views/financeiro-template.html');
+        echo str_replace('[[conteudo]]', $conteudo, $template);
     }
     public function criar(){
         $baseUrl = $this->url;
