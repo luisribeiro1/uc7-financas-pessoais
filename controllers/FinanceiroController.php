@@ -13,7 +13,7 @@ class FinanceiroController{
     # Cria a propriedade que será usada nos métodos abaixo
     private $financeiroModel;
 
-    public function __contruct(){
+    public function __construct(){
     #instancia a classe Financeiro para obter os dados do model
      $this->financeiroModel = new Financeiro();
     }
@@ -21,12 +21,12 @@ class FinanceiroController{
     public function index(){
         
         # Cria um objeto que receberá a lista de transações que o Model retornará
-        $transacoes = $this->financeiroModel->getAllFinanceiro();
+        $registros_financeiros = $this->financeiroModel->getAllFinanceiro();
 
         # Recebe o valor da propriedade $url e fica disponível para uso na view
         $baseUrl = $this->url;
 
-        echo "Método index() foi chamado";
+        
 
         # Importa a view que irá renderizar o template usando as variáveis acima:
         # $transacoes (array com dados) e $baseUrl com o endereço da aplicação
@@ -46,7 +46,7 @@ class FinanceiroController{
         
         echo "Método atualizar() foi chamado";
 
-        // $acao = $_POST["acao"];
+        $acao = $_POST["acao"];
 
     }
 
@@ -55,7 +55,7 @@ class FinanceiroController{
         // $this->financeiroModel->delete();
         echo "Método cancelar() foi chamado";
         # Redirecionar o usuário para a listagem de transações
-        // header("location: ".$this->url."/financeiro");
+        header("location: ".$this->url."/financeiro");
     }
 
 }
