@@ -5,11 +5,16 @@
   --bg-th: #2E2B43;
   --text-color: #FFF;
   --text-secondary: #08A88A;
-  --deb: #FF8585;
-  --cred: #2ECC71;
+  --deb: #f75858;
+  --cred: #50aa76;
 }
 
-body {
+::selection {
+  background-color: var(--text-secondary);
+  color: #000000;
+}
+
+.body {
   background-color: var(--bg);
   color: var(--text-color);
   font-family: 'Poppins', 'sans-serif', 'sans';
@@ -57,6 +62,7 @@ a, i {
 }
 
 /* TABELA */
+
 .tabela {
   background-color: var(--bg);
 }
@@ -89,7 +95,7 @@ th, td {
 }
 
 .cred {
-  color: var(--cred);
+  color: var(--text-secondary);
 }
 
 .tag {
@@ -101,7 +107,7 @@ th, td {
   padding-inline: 2.8rem;
   border-radius: 1.2rem;
   font-weight: 700;
-  background-color: var(--cred);
+  background-color: var(--text-secondary);
   color: var(--text-color);
 }
 
@@ -114,6 +120,7 @@ th, td {
 }
 
 /* PÁGINA 404 */
+
 .page404 {
   height: calc(100vh - 100px);
   width: 100%;
