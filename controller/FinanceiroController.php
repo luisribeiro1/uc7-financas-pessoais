@@ -19,7 +19,6 @@ class FinanceiroController
         
       
        $registros_financeiros = $this->financeiroModel->getAll();
-
         
         $baseUrl = $this->url;
        require "views/FinanceiroList.php";
