@@ -7,8 +7,16 @@ class FinanceiroController{
     private $url = "http://localhost/financas_pessoais";
     private  $financeiroModel;
 
+    public function __construct(){
+        $this->financeiroModel = new  Financeiro();
+        
+    }
+
     public function index(){
-        echo "método index() foi chamado";
+        $registros_financeiros = $this->financeiroModel->getAllFinanceiro();
+        $baseUrl = $this->url;
+        require "views/FinanceiroList.php";
+
     }
 
     public function criar(){

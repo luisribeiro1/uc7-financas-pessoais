@@ -1,8 +1,11 @@
 <?php
+require "DataBase.php";
 
 class Financeiro{
     private $db;
-
+    public function __construct(){
+        $this->db = DataBase::getConexao();
+    }
     public function getAllFinanceiro(){
         $sql = $this->db->query("SELECT * FROM financeiro_pessoal");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
