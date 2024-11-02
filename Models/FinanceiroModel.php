@@ -3,7 +3,7 @@
 # Incluir o arquivo com conexão com o banco de dados
 require_once "DataBase.php";
 
-class Financeiro()
+class Financeiro
 {
 # Criar um atributo privado para receber a conexão com o banco 
 private $db;

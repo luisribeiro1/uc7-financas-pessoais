@@ -22,12 +22,12 @@ class FinanceiroController {
     public function index(){
 
         // # Cria um objeto que receberá a lista de transacoes que o Model retornará
-        $transacoes = $this->financeiroModel->getAllFinanceiro();
+        $registros_financeiros = $this->financeiroModel->getAllFinanceiro();
 
         # Recebe o valor da propriedade $url e fica disponível para uso na view
         $baseUrl = $this->url;
 
-        echo "Método index() foi chamado";
+        // echo "Método index() foi chamado";
 
         require "views/FinanceiroList.php";
     }
@@ -36,7 +36,7 @@ class FinanceiroController {
     public function criar(){
         $baseUrl = $this->url;
 
-        echo "Método criar() foi chamado";
+        // echo "Método criar() foi chamado";
 
         $acao = "criar";
         require "views/FinanceiroForm.php";
@@ -46,18 +46,18 @@ class FinanceiroController {
     // Método responsável por receber os dados do formulário e enviar para o model
     public function atualizar(){
 
-        echo "Método atualizar() foi chamado";
+        // echo "Método atualizar() foi chamado";
 
-        // $acao = $_POST["acao"];
+        $acao = $_POST["acao"];
     }
 
     public function cancelar(){
         # Executa o método delete da classe de Model
         $this->financeiroModel->cancelar();
 
-        echo "Método cancelar() foi chamado";
+        // echo "Método cancelar() foi chamado";
 
         // # Redirecionar o usuário para a listagem de transacoes
-        // header("location: ".$this->url."/financeiro");
+         header("location: ".$this->url."/financeiro");
     }
 }

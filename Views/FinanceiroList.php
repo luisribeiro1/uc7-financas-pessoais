@@ -1,0 +1,51 @@
+<?php
+
+$lista = "  <table class='table'>
+  <thead>
+    <tr>
+      <th scope='col'>ID</th>
+      <th scope='col'>Data</th>
+      <th scope='col'>Descrição</th>
+      <th scope='col'>Valor</th>
+      <th scope='col'>Débito/Crédito</th>
+      <th scope='col'>Status</th>
+      <th scope='col'></th>
+    </tr>
+    </thead>
+  <tbody>";
+
+# Iterar sobre o array  que foi criado no controller e que contém os dados das mesas.
+//var_dump($lista_de_usuarios);
+
+foreach ($registros_financeiros as $financas) {
+    
+    $id_financeiro = $financas["id_financeiro"];
+    $data = $financas["data"];
+    $descricao = $financas["descricao"];
+    $valor = $financas["valor"];
+    $deb_cred = $financas["deb_cred"];
+    $status = $financas["status"];
+    
+
+    # Cria os cards HTML com os dados do lançamento financeiro
+    $lista.="
+        <tr>
+      <td>$id_financeiro</td>
+      <td>$data</td>
+      <td>$descricao</td>
+      <td>$valor</td>
+      <td>$deb_cred</td>
+      <td>$status</td>
+      <td><button class='btn btn-danger'>Cancelar</button></td>
+    </tr>
+            ";
+}
+
+# Faz a leitura dos arquivos de templates e armazena nas variáveis.
+$html = file_get_contents("views/financeiro-template.html");
+
+# Substituir a tag [[lista]] pelo conteúdo da variável $lista. O mesmo acontece com as demais variáveis
+$html = str_replace("[[lista]]", $lista, $html);
+$html = str_replace("[[base-url]]", $baseUrl, $html);
+
+echo $html;
