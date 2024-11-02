@@ -4,7 +4,7 @@ require_once "models/FinanceiroModel.php";
 
 class FinanceiroController {
     
-    private $baseUrl = "http://localhost/uc7/financas/";
+    private $baseUrl = "http://localhost/uc7/financas";
     private $acao;
     private $financeiroModel;
 
@@ -23,11 +23,19 @@ class FinanceiroController {
     }
 
     public function atualizar(){
-        echo "Método atualizar() foi chamado.";    
+        $data = $_POST["data"];
+        $descricao = $_POST["descricao"];
+        $valor = $_POST["valor"];
+        $deb_cred = $_POST["deb_cred"];
+
+        $status = $_POST["status"];
+
+        $acao = $_POST["acao"];
     }
 
-    public function cancelar(){
-        echo "Método cancelar() foi chamado.";    
+    public function cancelar($id_financeiro){
+        $this->financeiroModel->cancel($id_financeiro);
+        header("location: ".$this->baseUrl . "/financeiro");
     }
 
 }

@@ -21,6 +21,7 @@ foreach($registros_financeiros as $registros){
                 <th scope='col'>Débito</th>
                 <th scope='col'>Crédito</th>
                 <th scope='col'>Status</th>
+                <th scope='col'>Ações</th>
             </tr>
         </thead>
             
@@ -31,6 +32,7 @@ foreach($registros_financeiros as $registros){
                 <td>$valor</td>
                 <td>$deb_cred</td>
                 <td>$status</td>
+                <td> <a class='text-primary text-decoration-none' href='[[base-url]]/financeiro/cancelar/$id_financeiro' onclick=\"return confirm('Confirma o cancelamento da atividade $id_financeiro?')\"><i class='bi bi-x'></i>Cancelar</a> </td>
             </tr>
         </tbody>
     </table>";
