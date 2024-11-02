@@ -35,10 +35,6 @@ foreach($registros_financeiros as $rf){
             </tbody>
         </table>
     </div>";
-                    
-      
-        
-
 }
 
 $html = file_get_contents("views/Financeiro-template.html");
