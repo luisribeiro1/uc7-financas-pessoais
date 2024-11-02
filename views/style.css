@@ -2,25 +2,116 @@
 
 :root {
   --bg: #29263D;
-  --text-color: #fff;
-  --gray: #A0A7B1;
+  --bg-th: #2E2B43;
+  --text-color: #FFF;
+  --text-secondary: #08A88A;
+  --deb: #FF8585;
+  --cred: #2ECC71;
 }
 
 body {
-  background-color: var(--bg)!important;
+  background-color: var(--bg);
   color: var(--text-color);
   font-family: 'Poppins', 'sans-serif', 'sans';
+  overflow-x: hidden;
 }
 
+.content {
+  min-height: calc(100vh - 240px);
+}
+
+.hr {
+  color: var(--text-secondary);
+}
+
+lord-icon {
+  width: 70px;
+  height: 70px;
+}
+
+lord-icon.logo {
+  width: 100px;
+  height: 100px;
+}
+
+lord-icon.incluir {
+  width: 24px;
+  height: 24px;
+}
+
+.btns {
+  color: var(--text-color);
+  background-color: var(--text-secondary);
+  padding: .8rem 1rem;
+  border-radius: 24px;
+}
+
+.btns:hover {
+  background-color: hsla(169, 91%, 35%, 0.60);
+  transition: .4s ease-in-out;
+}
+
+a, i {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* TABELA */
 .tabela {
-  background-color: var(--bg)!important;
+  background-color: var(--bg);
 }
 
 th, td {
   color: var(--text-color);
+  padding: 1.25rem 1rem;
+  font-size: 1.05rem;
+}
+
+.tabela thead th {
+  background-color: var(--bg-th);
+}
+
+.table-group-divider {
+  color: hsla(169, 91%, 35%, 0.555);
+}
+
+.tabela tbody tr {
+  transition: all 0.3s;
+}
+
+.tabela tbody tr:hover {
+  cursor: pointer;
+  background-color: var(--bg-th);
+}
+
+.deb {
+  color: var(--deb);
+}
+
+.cred {
+  color: var(--cred);
+}
+
+.tag {
   padding: 1rem;
 }
 
+.status--ok {
+  padding-block: 0.8rem;
+  padding-inline: 2.8rem;
+  border-radius: 1.2rem;
+  font-weight: 700;
+  background-color: var(--cred);
+  color: var(--text-color);
+}
+
+.status--pendente {
+  padding-block: 0.8rem;
+  border-radius: 1.2rem;
+  font-weight: 600;
+  background-color: var(--deb);
+  color: var(--text-color);
+}
 
 /* PÁGINA 404 */
 .page404 {
@@ -30,4 +121,4 @@ th, td {
 
 .erro{
   font-size: 18rem;
-}
+} 
