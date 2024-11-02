@@ -6,6 +6,7 @@
   --text-color: #FFF;
   --text-secondary: #08A88A;
 <<<<<<< HEAD
+<<<<<<< HEAD
   --deb-bg: #3e2c2c;
   --deb-text: #ec8a8a;
   --cred-bg: #313e2c;
@@ -26,6 +27,18 @@
 
 body {
 >>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
+=======
+  --deb: #f75858;
+  --cred: #50aa76;
+}
+
+::selection {
+  background-color: var(--text-secondary);
+  color: #000000;
+}
+
+.body {
+>>>>>>> c5ec66e (:lipstick: feat: Estilização CSS da tabela)
   background-color: var(--bg);
   color: var(--text-color);
   font-family: 'Poppins', 'sans-serif', 'sans';
@@ -74,9 +87,13 @@ a, i {
 
 /* TABELA */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
+=======
+
+>>>>>>> c5ec66e (:lipstick: feat: Estilização CSS da tabela)
 .tabela {
   background-color: var(--bg);
 }
@@ -116,8 +133,12 @@ th, td {
 }
 
 .cred {
+<<<<<<< HEAD
   color: var(--cred);
 >>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
+=======
+  color: var(--text-secondary);
+>>>>>>> c5ec66e (:lipstick: feat: Estilização CSS da tabela)
 }
 
 .tag {
@@ -134,7 +155,7 @@ th, td {
   color: var(--cred-text);
 =======
   font-weight: 700;
-  background-color: var(--cred);
+  background-color: var(--text-secondary);
   color: var(--text-color);
 >>>>>>> 6e345db (:lipstick: feat: Estilização CSS da tabela)
 }
