@@ -1,6 +1,7 @@
 <?php
+require_once "Database.php";
 
-class FinanceiroController
+class Financeiro
 {
   private $db;
 
@@ -29,5 +30,4 @@ class FinanceiroController
     $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status = ? WHERE id_financeiro = ?");
     return $sql-> execute([$id_financeiro, $status]);
   }
-
 }

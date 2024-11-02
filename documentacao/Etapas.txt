@@ -1,0 +1,121 @@
+Projeto Finanças Pessoais
+
+
+ETAPA 1: 
+- Criar e organizar os arquivos do projeto como mostrado abaixo (ver imagem).
+
+financas_pessoais
+= controllers
+--- FinanceiroController.php
+= models
+--- FinanceiroModel.php
+--- Database.php
+= views
+--- FinanceiroList.php
+--- FinanceiroForm.php
+--- financeiro-template.html
+--- style.css
+= documentacao
+--- banco-de-dados.sql
+- .htaccess
+- index.php
+
+
+ 
+- Definir o conteúdo de .htaccess (mesmo do projeto Restaurante MVC)
+- Criar a rota /financeiro em index (Pode manter a mesma estrutura do projeto Restaurante MVC)
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 1"
+
+ETAPA 2:
+- Em FinanceiroController.php, criar a classe controller e nela incluir os seguintes atributos e métodos:
+
+Atributos: acao, baseUrl e financeiroModel
+
+Métodos: 
+index()
+criar()
+atualizar()
+cancelar()
+
+Em cada um dos métodos incluir apenas um comando echo mostrando que o método foi chamado. Exemplo:
+public function criar(){
+	echo "método criar() foi chamado";
+}
+- Testar todas as rotas, ou seja:
+/financeiro/index
+/financeiro/criar
+/financeiro/atualizar
+/financeiro/cancelar
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 2"
+
+
+ETAPA 3:
+- Criar um banco de dados com o nome financas_pessoais e uma tabela com a seguinte estrutura:
+Nome: financeiro_pessoal
+Campos: id_financeiro (int e auto_increment), data (date), descricao (varchar), valor (decimal), deb_cred (varchar), status (varchar)
+
+- Os comandos usados na criação da tabela devem ficar no arquivo banco-de-dados.sql na pasta documentacao
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 3"
+
+
+ETAPA 4:
+- Em Database.php, criar a classe de acesso ao banco de dados (aproveitar a mesma classe de Restaurante MVC, atualizando os dados do novo banco)
+- Em FinanceiroModel.php, criar a classe model e inserir:
+
+Atributos: db
+
+Métodos:
+- contrutor
+- getAll(): Este método deverá fazer a leitura de todos os registros na tabela e retornar um array associativo com os dados. Os dados deverão ser ordenado por data.
+- getById(): Este método deverá receber o id_financeiro como parâmetro e fazer a leitura de um único registro na tabela de acordo com este parâmetro. Retornar um array associativo com os dados.
+- insert(): Deverá receber todos os valores a serem inseridos por parâmetro a fazer a inclusão desses dados na tabela
+- cancelar(): Deverá receber o id_financeiro que será o valor do campo chave a ser comparado no Where para efetuar o cancelamento. O cancelamento consiste em alterar o status para cancelado.
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 4"
+
+
+
+ETAPA 5:
+- Em FinanceiroController.php:
+- Criar o método construtor que deverá instanciar a classe Financeiro no model
+- Alterar o método index() para chamar o método getAll() e atribuir o resultado à variável $registros_financeiros
+- Fazer o include do arquivo FinanceiroList.php
+
+- Em financeiro-template.html, criar o código HTML. Pode aproveitar o mesmo do projeto Restaurante MVC, juntando o header e o footer aqui em um único template. Se desejar modificar o HTML, fique a vontade.
+- Em FinanceiroList, iterar sobre o array $registros_financeiros e criar uma tabela com os resultados como no exemplo abaixo:
+
+----------------------------------------------------------------------------------------------------
+| Data		| Descrição				| 	Débito	| 	 Crédito |	X  |
+----------------------------------------------------------------------------------------------------
+| xx/xx/xxxx	| Salário do mês de janeiro		| 	     -	| 	9.999,99 |	X  |
+----------------------------------------------------------------------------------------------------
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 5"
+
+
+
+ETAPA 6:
+Em FinanceiroList, criar a rota /financeiro/cancelar/$id_financeiro em cada um dos lançamentos financeiros. 
+Em FinanceiroController, no método cancelar(), pegar o $id_financeiro e chamar o método cancelar() no model, passando o $id_financeiro como parâmetro. (veja o exemplo de aprovar avaliações que fizemos no projeto Restaurante MVC)
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 6"
+
+
+
+ETAPA 7:
+Em FinanceiroForm.php, criar o formulário para os campos da tabela do banco de dados. No action do form usar a rota /financeiro/atualizar
+Em FinanceiroController, no método atualizar, criar as variáveis para recuperar os campos do formulário.
+Chamar o método insert() do model e passar as variáveis como parâmetros 
+Redirecionar o usuário para a rota /financeiro
+- Enviar para o GitHub com o commit "FinancasPessoais - data - Etapa 7"
+
+
+
+
+
+git init
+git add .
+git commit -m "FinançasPessoais - xx/xx-xxxx - Etapa x"
+git branch -M main
+git checkout nome_da_sua_branch
+git remote add origin https://github.com/luisribeiro1/uc7-financas-pessoais.git
+git push -u origin main nom_da_sua_branch
+
+
