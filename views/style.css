@@ -34,7 +34,7 @@ body {
 
 ::selection {
   background-color: var(--text-secondary);
-  color: #000000;
+  color: #0d110e;
 }
 
 .body {
