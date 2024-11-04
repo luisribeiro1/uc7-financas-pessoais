@@ -29,7 +29,7 @@
         }
 
         public function cancelar($id){
-            $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status=? WHERE id_financeiro = ?");
+            $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status = ? WHERE id_financeiro = ?");
             return $sql->execute(["Cancelado",$id]);
         }
 
