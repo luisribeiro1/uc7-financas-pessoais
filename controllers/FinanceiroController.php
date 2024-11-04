@@ -3,7 +3,7 @@
 require_once "models/FinanceiroModel.php";
 
 class FinanceiroController{
-    private $baseUrl = "https://localhost/uc7/financas-pessoais";
+    private $baseUrl = "http://localhost/uc7/financas-pessoais";
 
     private $financeiroModel;
 
@@ -21,6 +21,12 @@ class FinanceiroController{
 
     public function criar(){
         $baseUrl = $this->baseUrl;
+        $deb_cred = "<option></option>
+        <option>Débito</option>
+        <option>Crédito</option>";
+        $status = "<option></option>
+        <option>Finalizado</option>
+        <option>Em andamento</option>";
         $acao = "criar";
         require "views/FinanceiroForm.php";
 
@@ -53,14 +59,14 @@ class FinanceiroController{
             $id = $_POST["id_financeiro"];
             $this->financeiroModel->update($id,$data,$descricao,$valor,$deb_cred,$status);
         }else{
-            $this->cardapioModel->insert($data,$descricao,$valor,$deb_cred,$status);
+            $this->financeiroModel->insert($data,$descricao,$valor,$deb_cred,$status);
         }
         header("location :".$this->baseUrl."/financeiro");
     }
 
     public function cancelar($id){
         $this->financeiroModel->cancelar($id);
-
+        $baseUrl = $this->baseUrl;
         header("location: ".$this->baseUrl."/financeiro");
     }
 }

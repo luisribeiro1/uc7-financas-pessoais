@@ -39,8 +39,9 @@ foreach($lista_de_financas as $financeiro){
       <td class='$text_color'><strong>$status</strong></td>
       <td>
             <div class='d-inline-flex fs-dash'>
-                <a href='edit.html' class='btn btn-primary small mx-2'><i class='bi bi-pencil-square'></i> Editar</a>
-                <a class='btn btn-danger small mx-2'><i class='bi bi-x-square' href='[[base-url]]/financeiro/cancelar/$id' onclick=\"return confirm('Confirma o cancelamento da avaliação: $id?')\"></i> Cancelar</a>
+                <a class='btn btn-primary small mx-2'><i class='bi bi-pencil-square' href='[[base-url]]/financeiro/editar/$id'></i> Editar</a>
+
+                <a class='btn btn-danger small mx-2' href='[[base-url]]/financeiro/cancelar/$id' onclick=\"return confirm('Confirma o cancelamento da avaliação: $id?')\"><i class='bi bi-x-square'></i> Cancelar</a>
             </div>
         </td>
     </tr>

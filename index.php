@@ -9,7 +9,7 @@ $requisicao = str_replace("/uc7/financas-pessoais/", "", $requisicao);
 $segmentos = explode("/",$requisicao);
 
 $controlador = isset($segmentos[0]) ? $segmentos[0] : "financeiro";
-$metodo = isset($segmentos[1]) ? $segmentos[1] : "index";
+$metodo = isset($segmentos[1]) && $segmentos[1] !="" ? $segmentos[1] : "index";
 $identificador = isset($segmentos[2]) ? $segmentos[2] : null;
 
 switch($controlador){
