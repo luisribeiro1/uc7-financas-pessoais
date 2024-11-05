@@ -8,7 +8,7 @@ $endereco = str_replace("/atividade/financas_pessoais/", "", $endereco);
 $segmentos = explode("/", $endereco);
 
 $controlador = isset($segmentos[0]) ? $segmentos[0] : "financas";
-$metodo = isset($segmentos[1]) ? $segmentos[1] : "index";
+$metodo = isset($segmentos[1]) && $segmentos[1]!= "" ? $segmentos[1] : "index";
 $identificador = isset($segmentos[2]) ? $segmentos[2] :  null;
 
 switch($controlador){

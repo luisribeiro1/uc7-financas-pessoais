@@ -3,7 +3,7 @@
 require "models/FinanceiroModel.php";
 
 class FinanceiroController{
-    private $url = "http://localhost/atividade/financeiro";
+    private $url = "http://localhost/atividade/financas_pessoais";
     private $financeiroModel;
 
     public function __construct(){
@@ -24,7 +24,9 @@ class FinanceiroController{
         echo "método atualizar foi criado";
     }
 
-    public function cancelar(){
-        echo "método cancelar foi criado";
+    public function cancelar($id){
+        $registros_financeiros = $this->financeiroModel->cancel($id);
+        $baseUrl = $this->url;
+        header("location: " . $this->url . "/financas");
     }
 }
