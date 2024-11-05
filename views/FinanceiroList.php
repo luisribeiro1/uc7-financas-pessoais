@@ -11,7 +11,7 @@ foreach ($registros_financeiros as $registros){
 
    
     $lista.= "
-
+  '
   <table class='table'>
   <thead>
     <tr>
@@ -19,6 +19,8 @@ foreach ($registros_financeiros as $registros){
       <th scope='col'>Descrição</th>
       <th scope='col'>Débito</th>
       <th scope='col'>Crédito</th>
+      <th scope='col'>Status</th>
+      <th scope='col'>Ações</th>
      
     </tr>
   </thead>
@@ -28,6 +30,10 @@ foreach ($registros_financeiros as $registros){
       <td>$descricao</td>
       <td>X</td>
       <td>20.000,99</td>
+      <td>$status</td>
+
+      <td> <a class='text-primary text-decoration-none' href='[[base-url]]/financeiro/cancelar/$id_financeiro'><i class='bi bi-pencil-square'></i> Cancelar</a> <a</td>
+
     </tr>
   </tbody>
 </table>

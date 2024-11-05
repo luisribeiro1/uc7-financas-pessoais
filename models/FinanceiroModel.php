@@ -30,5 +30,10 @@ class Financeiro{
         return $sql->execute([$status,$id_financeiro]);
     }
 
+    public function cancelar($id_financeiro) {
+        $sql = $this->db->prepare('UPDATE financeiro_pessoal SET status=? WHERE id_financeiro=?');
+        return $sql->execute(['cancelado',$id_financeiro]);
+    }
+
 }
 

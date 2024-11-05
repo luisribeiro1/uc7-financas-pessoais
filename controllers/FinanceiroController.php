@@ -4,7 +4,7 @@ require_once "models/FinanceiroModel.php";
 
 class FinanceiroController{
 
-    private $url = "http://localhost/financas_pessoais";
+    private $url = "http://localhost/teste/financas_pessoais";
     private  $financeiroModel;
 
     public function __construct(){
@@ -29,8 +29,10 @@ class FinanceiroController{
         $acao = "atualizar";
     }
 
-    public function cancelar(){
-        echo "método cancelar() foi chamado";
+    public function cancelar($id_financeiro){
+        $this->financeiroModel->cancelar($id_financeiro);
+        $baseUrl = $this->url;
+        header("location: ".$this->url."/financeiro");
         $acao = "cancelar";
     }
 
