@@ -1,6 +1,17 @@
 <?php 
 
-$tabela = "";
+$tabela = "
+    <table class='table'>
+        <thead>
+            <tr>
+                <th scope='col'>Data</th>
+                <th scope='col'>Descrição</th>
+                <th scope='col'>Débito</th>
+                <th scope='col'>Crédito</th>
+                <th scope='col'>Status</th>
+                <th scope='col'>Ações</th>
+            </tr>
+        </thead>";
 
 foreach($registros_financeiros as $registros){
     $id_financeiro = $registros["id_financeiro"];
@@ -12,18 +23,7 @@ foreach($registros_financeiros as $registros){
 
 
     $tabela.= "
-    <table class='table'>
-        <thead>
-            <tr>
-                <th scope='col'>Data</th>
-                <th scope='col'>Descrição</th>
-                <th scope='col'>Débito</th>
-                <th scope='col'>Crédito</th>
-                <th scope='col'>Status</th>
-                <th scope='col'>Ações</th>
-            </tr>
-        </thead>
-        <tbody class='table-group-divider'>
+        <tbody>
             <tr>
                 <th>$data</th>
                 <td>$descricao</td>
@@ -32,9 +32,10 @@ foreach($registros_financeiros as $registros){
                 <td>$status</td>
                 <td> <a class='text-primary text-decoration-none' href='[[base-url]]/financeiro/cancelar/$id_financeiro' onclick=\"return confirm('Confirma o cancelamento da atividade $id_financeiro?')\"><i class='bi bi-x'></i>Cancelar</a> </td>
             </tr>
-        </tbody>
-    </table>";
+        </tbody>";
 }
+
+$tabela.= "</table>";
 
 $html = file_get_contents("views/financeiro-template.html");
 
