@@ -19,6 +19,14 @@ class Financeiro {
         return $sql->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function insert($data,$descricao,$valor,$deb_cred,$status) {
+        $sql = $this->db->prepare(
+            "INSERT INTO financeiro_pessoal (data,descricao,valor,deb_cred,status)
+            VALUES (?, ?, ?, ?, ?)"
+        );
+        return $sql->execute([$data,$descricao,$valor,$deb_cred,$status]);
+    }
+
     public function cancel($id_financeiro) {
         $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status=? WHERE id_financeiro=?");
         return $sql->execute(['Cancelado',$id_financeiro]);

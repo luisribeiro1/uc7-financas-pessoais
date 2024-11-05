@@ -12,7 +12,6 @@ foreach($registros_financeiros as $registros){
 
 
     $tabela.= "
-    <br>
     <table class='table'>
         <thead>
             <tr>
@@ -24,8 +23,7 @@ foreach($registros_financeiros as $registros){
                 <th scope='col'>Ações</th>
             </tr>
         </thead>
-            
-        <tbody>
+        <tbody class='table-group-divider'>
             <tr>
                 <th>$data</th>
                 <td>$descricao</td>
@@ -44,3 +42,8 @@ $html = str_replace("[[tabela]]", $tabela, $html);
 $html = str_replace("[[base-url]]", $baseUrl, $html);
 
 echo $html;
+
+
+
+
+
