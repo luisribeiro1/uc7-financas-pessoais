@@ -21,17 +21,39 @@ class FinanceiroController {
     }
 
     public function criar(){
-        echo "metodo criar() foi chamado";    
+       $data = "" ;
+       $descricao = "" ;
+       $valor = "" ;
+       $deb_cred = "" ;
+       $status = "";
+       $baseUrl = $this->baseUrl;
+        
+        require "views/FinanceiroForm.php";
     }
 
     public function atualizar(){
-        echo "metodo atualizar() foi chamado";    
+        $data = $_POST["data"];
+        $descricao = $_POST["descricao"];
+        $valor = $_POST["valor"];
+        $deb_cred = $_POST["deb_cred"];
+        $status = isset($_POST["status"]) ? true : false;
+
+        $acao = $_POST["acao"];
+
+        if($acao == "editar"){
+            $id_financeiro = $_POST["id_financeiro"];
+            $this->financeiroModel->update($id_financeiro,$data,$descricao,$valor,$deb_cred,$status);
+        }else{
+            $this->financeiroModel->insert($data,$descricao,$valor,$deb_cred,$status);
+        }
+
+        header("location: " . $this->baseUrl. "/financeiro");
     }
 
-    public function cancelar($id_financeiro){
+    public function aprovar($id_financeiro){
         
-        $this->financeiroModel->update($id_financeiro);
-        header ("location: " . $this->url . "/financeiro");
+        $this->financeiroModel->cancelar($id_financeiro);
+        header ("location: " . $this->baseUrl . "/financeiro");
     }
 
 }

@@ -24,12 +24,12 @@ class Financas {
     }
 
 
-    public function insert($id_financeiro,$data,$descricao,$valor,$deb_cred,$status){
-        $sql = $this->db->prepare("INSERT INTO financeiro_pessoal (id_financeiro, data, descricao, valor, deb_cred, status) VALUES (?,?,?,?,?,?)");
-        return $sql->execute([$id_financeiro,$data,$descricao,$valor,$deb_cred,$status]);
+    public function insert($data,$descricao,$valor,$deb_cred,$status){
+        $sql = $this->db->prepare("INSERT INTO financeiro_pessoal (data, descricao, valor, deb_cred, status) VALUES (?,?,?,?,?)");
+        return $sql->execute([$data,$descricao,$valor,$deb_cred,$status]);
     }
     
-    public function update($id_financeiro){
+    public function cancelar($id_financeiro){
         $sql = $this->db->prepare("UPDATE financeiro_pessoal set  status=? Where id_financeiro=?");
 
         return $sql->execute(["cancelado",$id_financeiro]);

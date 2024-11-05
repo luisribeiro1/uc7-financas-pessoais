@@ -1,6 +1,16 @@
 <?php
 
-$table = "";
+$table = "<table class='table'>
+        <thead>
+            <tr>
+                <th scope='col'>Data</th>
+                <th scope='col'>Descrição</th>
+                <th scope='col'>Débito</th>
+                <th scope='col'>Crédito</th>
+                <th scope='col'>Status</th>
+                <th scope='col'></th>
+            </tr>
+        </thead>";
 
 foreach($registro_financeiros as $registro){
 
@@ -13,16 +23,6 @@ foreach($registro_financeiros as $registro){
 
 
     $table.= "
-    <table class='table'>
-        <thead>
-            <tr>
-                <th scope='col'>Data</th>
-                <th scope='col'>Descrição</th>
-                <th scope='col'>Débito</th>
-                <th scope='col'>Crédito</th>
-                <th scope='col'>Status</th>
-            </tr>
-        </thead>
         <tbody>
             <tr>
             <th scope='row'>$data</th>
@@ -30,13 +30,14 @@ foreach($registro_financeiros as $registro){
             <td>$valor</td>
             <td>$deb_cred</td>
             <td>$status</td>
-                <td> <a href='[[base-url]]/financeiro/cancelar/$id_financeiro' class='btn btn-info'>Cancelar</a></td>
+                <td> <a href='[[base-url]]/financeiro/aprovar/$id_financeiro' class='btn btn-danger'>Cancelar</a>
+                                
             </tr>
         </tbody>
-    </table>
-            
     ";
 }
+
+$table.= "</table>";
 
 $html= file_get_contents("views/financeiro.html");
 
