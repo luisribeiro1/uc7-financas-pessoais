@@ -43,9 +43,12 @@ class FinanceiroController
         
     }
 
-    public function cancelar(){
-        $baseUrl = $this->url;
+    public function cancelar($id_financeiro){
 
+        $this->financeiroModel->cancelar($id_financeiro)
+
+
+        $baseUrl = $this->url;
         $acao = "cancelar";
     }
 
