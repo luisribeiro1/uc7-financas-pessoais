@@ -21,6 +21,7 @@ class FinanceiroController{
 
     public function criar(){
         $baseUrl = $this->baseUrl;
+        $descricao = "";
         $deb_cred = "<option></option>
         <option>Débito</option>
         <option>Crédito</option>";
@@ -32,21 +33,36 @@ class FinanceiroController{
 
     }
 
-    public function editar($id){
-        $financeiro = $this->financeiroModel->getById($id);
-        $data = $financeiro["data"];
-        $descricao = $financeiro["descricao"];
-        $valor = $financeiro["valor"];
-        $deb_cred = $financeiro["deb_cred"];
-        $status = $financeiro["status"];
+    // public function editar($id){
+    //     $financeiro = $this->financeiroModel->getById($id);
+    //     $data = $financeiro["data"];
+    //     $descricao = $financeiro["descricao"];
+    //     $valor = $financeiro["valor"];
+    //     $status = $financeiro["status"];
 
-        $baseUrl = $this->baseUrl;
+    //     $deb_creds = ["Débito", "Crédito"];
+    //     $deb_cred = "<option></option>";
+    //     foreach($deb_creds as $d){
+    //         $selecionado = $financeiro["deb_cred"] == $d ? "selected" : "";
+    //         $deb_cred .= "<option $selecionado>$d</option>";
+    //     }
 
-        $acao = "editar";
-        require "views/FinanceiroForm.php";
-    }
+    //     $statusTipos = ["Em andamento", "Finalizado"];
+    //     $status = "<option></option>";
+    //     foreach($statusTipos as $s){
+    //         $selecionado = $financeiro["status"] == $s ? "selected" : "";
+    //         $status .= "<option $selecionado>$s</option>";
+    //     }
+
+
+    //     $baseUrl = $this->baseUrl;
+
+    //     $acao = "editar";
+    //     require "views/FinanceiroForm.php";
+    // }
   
     public function atualizar(){
+        $id = $_POST["id_financeiro"];
         $data = $_POST["data"];
         $descricao = $_POST["descricao"];
         $valor = $_POST["valor"];
@@ -61,7 +77,7 @@ class FinanceiroController{
         }else{
             $this->financeiroModel->insert($data,$descricao,$valor,$deb_cred,$status);
         }
-        header("location :".$this->baseUrl."/financeiro");
+        header("location: ".$this->baseUrl."/financeiro");
     }
 
     public function cancelar($id){
