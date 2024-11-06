@@ -51,7 +51,7 @@
                         </div>
                         <input type="hidden" name="acao" value="<?= $acao ?>">
                         <input type="hidden" name="idfinanca" value="<?= $id ?>">
-                        <button type="submit" id="btnEnviar" name="btnEnviar" class="w-100 btn btn-lg btn-secondary">Editar <i class="bi bi-arrow-right"></i></button>
+                        <button type="submit" id="btnEnviar" name="btnEnviar" class="w-100 btn btn-lg btn-secondary">Enviar <i class="bi bi-arrow-right"></i></button>
                      </form>
 
                   </div>
