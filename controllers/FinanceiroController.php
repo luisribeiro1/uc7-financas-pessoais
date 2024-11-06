@@ -23,39 +23,48 @@
         # Método Criar:
         public function criar(){
             $baseUrl = $this->baseUrl;
-
-            echo "método criar() foi chamado";
-
-            $acao = "criar";
+            $data = "";
+            $descricao = "";
+            $valor = "";
+            
+            $deb_cred = "<option></option>
+            <option>Débito</option>
+            <option>Crédito</option>
+            ";
+            
+            $acao = "Criar";
             require "views/FinanceiroForm.php";
         }
         # Método Atualizar:
         public function editar($id){
-            // $financa = $this->financeiroModel->GetById($id);
-            // $data = $financa["data"];
-            // $descricao = $financa["descricao"];
-            // $valor = $financa["valor"];
-            // $deb_cred = $financa["deb_cred"];
-            // $status = $financa["status"];
+            $financa = $this->financeiroModel->GetById($id);
+            $id = $financa["id_financeiro"];
+            $data = $financa["data"];
+            $descricao = $financa["descricao"];
+            $valor = $financa["valor"];
+
+            $tipos = ["Débito","Crédito"];
+            $deb_cred = "<option></option>";
+            foreach ($tipos as $t) {
+                $selection = $financa["dep_cred"] == $t ? "selected" : " ";
+                $deb_cred .= "<option $selection>$t</option>";
+            }
 
             $baseUrl = $this->baseUrl;
 
-            echo "método editar() foi chamado ";
-
-            $acao = "editar";
+            $acao = "Editar";
             require "views/FinanceiroForm.php";
         }
         # Método de aplicação no BD:
-        public function atualizar() {
-            // $data = $_POST["data"];
-            // $descricao = $_POST["descricao"];
-            // $valor = $_POST["valor"];
-            // $deb_cred = $_POST["deb_cred"];
-            // $status = $financa["status"];
-            
+        public function atualizar($id = null) {
+            $data = $_POST["data"];
+            $descricao = $_POST["descricao"];
+            $valor = $_POST["valor"];
+            $dep_cred = $_POST["deb_cred"];
+
             $acao = $_POST["acao"];
             $baseUrl = $this->baseUrl;
-            if($acao=="editar"){
+            if($acao=="Editar"){
                 $id = $_POST["idfinanca"];
                 $this->financeiroModel->update($id,$data,$descricao,$valor,$dep_cred,$status);
             }else{
@@ -64,7 +73,7 @@
             
             header("location: ".$this->baseUrl."/financas");
         }
-        # Método Cancelar / excluir:
+        # Método Cancelar:
         public function cancelar($id){
             $this->financeiroModel->cancelar($id);
             $baseUrl = $this->baseUrl;

@@ -28,6 +28,13 @@
             return $sql->execute([$data,$descricao,$valor,$dep_cred,$status]);
         }
 
+        public function update($id,$data,$descricao,$valor,$dep_cred,$status){
+            $sql = $this->db->prepare(
+                "UPDATE financeiro_pessoal SET data = ?,descricao = ?,valor = ?,dep_cred = ?, status = ? WHERE id_financeiro = ?"
+            );
+            return $sql->execute([$data,$descricao,$valor,$dep_cred,$status,$id]);
+        }
+
         public function cancelar($id){
             $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status = ? WHERE id_financeiro = ?");
             return $sql->execute(["Cancelado",$id]);
