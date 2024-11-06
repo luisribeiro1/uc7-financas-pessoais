@@ -15,8 +15,8 @@ $segmentos = explode("/", $requisicao);
 
 # Verifica o padrão da rota
 $controlador = isset($segmentos[0]) ? $segmentos[0] : "financeiro";
-$metodo = isset($segmentos[1]) ? $segmentos[1] : "index";
-$identificador = isset($segmentos[2]) ? $segmentos[2] : null;
+$metodo = isset($segmentos[1]) && $segmentos[1] != "" ? $segmentos[1] : "index";
+$identificador = isset($segmentos[2]) && $segmentos[2] != "" ? $segmentos[2] : null;
 
 switch($controlador){
     case "financeiro":

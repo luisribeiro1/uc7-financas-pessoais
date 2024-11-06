@@ -1,31 +1,77 @@
 <?php
 
-$lista = "  <table class='table'>
-  <thead>
-    <tr>
-      <th scope='col'>ID</th>
-      <th scope='col'>Data</th>
-      <th scope='col'>Descrição</th>
-      <th scope='col'>Valor</th>
-      <th scope='col'>Débito/Crédito</th>
-      <th scope='col'>Status</th>
-      <th scope='col'></th>
-    </tr>
-    </thead>
-  <tbody>";
+
+$lista = " 
+<section class='container mt-4'>
+<div class='row'>
+<div class='col-md-6'>
+<span class='fs-4'><i class='bi bi-bank'></i> Finança Pessoal</span>
+</div>
+<div class='col-md-6 text-end'>
+<a href='[[base-url]]financeiro/criar' class='btn btn-success btn-sm'>
+<i class='bi bi-plus-circle me-1'></i>Novo Lançamento
+</a>
+<!-- |
+<a href='#' class='btn btn-danger btn-sm'>
+<i class='bi bi-printer me-1'></i>Imprimir
+</a>
+|
+<a href='#' class='btn btn-success btn-sm'>
+<i class='bi bi-box-arrow-right me-1'></i>Sair
+</a> -->
+
+</div>
+
+</section>
+
+<table class='table text-center'>
+<thead>
+<tr>
+<th scope='col'>ID</th>
+<th scope='col'>Data</th>
+<th scope='col'>Descrição</th>
+<th scope='col'>Valor</th>
+<th scope='col'>Débito/Crédito</th>
+<th scope='col'>Status</th>
+<th scope='col'></th>
+</tr>
+</thead>
+<tbody>";
 
 # Iterar sobre o array  que foi criado no controller e que contém os dados das mesas.
 //var_dump($lista_de_usuarios);
 
+function ajusteData($data){
+  $parts = explode('-',$data);
+  if(sizeof($parts) === 3){
+    // a data vem do BD no formato aaaa-mm-dd
+    $ano = $parts[0];
+    $mes = $parts[1];
+    $dia = $parts[2];
+    return "$dia/$mes/$ano";
+  }else{
+    return false;
+  }
+}
+
+function ajusteStatus($status){
+  if($status == "1"){
+    return "Ativo";
+  }else{
+    return "Cancelado";
+  }
+}
+
+
 foreach ($registros_financeiros as $financas) {
-    
-    $id_financeiro = $financas["id_financeiro"];
-    $data = $financas["data"];
-    $descricao = $financas["descricao"];
-    $valor = $financas["valor"];
-    $deb_cred = $financas["deb_cred"];
-    $status = $financas["status"];
-    
+  
+  $id_financeiro = $financas["id_financeiro"];
+  $data = ajusteData($financas["data"]);
+  $descricao = $financas["descricao"];
+  $valor = $financas["valor"];
+  $deb_cred = $financas["deb_cred"];
+  $status = ajusteStatus($financas["status"]);
+  
 
     # Cria os cards HTML com os dados do lançamento financeiro
     $lista.="
@@ -33,10 +79,11 @@ foreach ($registros_financeiros as $financas) {
       <td>$id_financeiro</td>
       <td>$data</td>
       <td>$descricao</td>
-      <td>$valor</td>
+      <td>R$$valor</td>
       <td>$deb_cred</td>
       <td>$status</td>
-      <td><button class='btn btn-danger'>Cancelar</button></td>
+      <td><a href='[[base-url]]financeiro/cancelar/$id_financeiro' class='btn btn-danger text-center'>Cancelar</a>
+      </td>
     </tr>
             ";
 }
