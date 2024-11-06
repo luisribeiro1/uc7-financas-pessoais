@@ -23,9 +23,7 @@
         # Método Criar:
         public function criar(){
             $baseUrl = $this->baseUrl;
-            $data = "";
             $descricao = "";
-            $valor = "";
             
             $deb_cred = "<option></option>
             <option>Débito</option>
