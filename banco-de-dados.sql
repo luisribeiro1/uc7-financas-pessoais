@@ -2,7 +2,7 @@ CREATE DATABASE financas_pessoais;
 
 USE financas_pessoais;
 
-CREATE TABLE financas_pessoal (
+CREATE TABLE financeiro_pessoal (
     id_financeiro INT AUTO_INCREMENT PRIMARY KEY,
     data DATE,
     descricao VARCHAR(255),
