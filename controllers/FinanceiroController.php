@@ -24,7 +24,7 @@ class FinanceiroController
   public function criar() {
     $baseUrl = $this->baseUrl;
     $acao = "criar";
-    require "views/FinanceiroForm.php";
+    require "views/FinanceiroList.php";
   }
 
   public function atualizar() {
@@ -33,9 +33,12 @@ class FinanceiroController
     echo "Método atualizar() foi chamado!";
   }
 
-  public function cancelar() {
+  public function cancelar($id_financeiro) {
     $baseUrl = $this->baseUrl;
-    $acao = "cancelar";
-    echo "Método cancelar() foi chamado";
+    $this->FinanceiroModel->cancelar($id_financeiro);
+    // $acao = "cancelar";
+    // require "views/FinanceiroList.php";
+
+    header("location: ".$this->baseUrl."/financeiro");
   }
 }

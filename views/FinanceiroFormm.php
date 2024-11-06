@@ -13,23 +13,24 @@ echo $header;
         <span class="fs-4"><span class="text-primary"><i class="bi bi-pencil-square"></i></span><strong> Cadastro e edição do Cardápio</strong></span>
       </div>
       <div class="col-md-6 text-end">
-        <a href="<?=$baseUrl?>/cardapio-adm" class="btn btn-sm btn-primary btns"><b><i class="bi bi-arrow-left me-1"></i></b>VOLTAR</a>
+        <a href="<?=$baseUrl?>/financeiro" class="btns"><b><i class="bi bi-arrow-left me-1"></i></b>&nbsp;VOLTAR</a>
       </div>
     </div>
 
       <div class="row mt-4">
           <div class="col-md-6">
             
-            <form action="<?= $baseUrl ?>/cardapio-adm/atualizar" method="post">
-              <label for="nome">Nome:</label>
-              <input class="form-control" type="text" name="nome" id="nome" value="<?= $nome ?>" require placeholder="Digite o nome do prato">
+            <form action="<?= $baseUrl ?>/financeiro/atualizar" method="post">
+              
+              <label for="data">Data:</label>
+              <input class="form-control" type="date" name="data" id="data" value="<?= $data ?>" require>
               <br>
 
-              <label for="preo">Preço:</label>
-              <input class="form-control" type="number" name="preco" id="preco" min="0" step="0.01" value="<?= $preco ?>" require placeholder="Valor do prato">
+              <label for="valor">Valor:</label>
+              <input class="form-control" type="number" name="valor" id="valor" min="0" step="0.01" value="<?= $valor ?>" require placeholder="R$ 0.000,00">
               <br>
 
-              <label for="tipo">Tipo:</label>
+              <label for="tipo">Débio:</label>
               <select name="tipo" id="tipo" class="form-select">
                 <?= $tipo ?>
               </select>
@@ -37,10 +38,6 @@ echo $header;
 
               <label>Descrição:</label>
               <textarea class="form-control" name="descricao" id="descricao" placeholder="Descrição do item" require><?= $descricao ?></textarea>
-              <br>
-
-              <label for="foto">Foto:</label>
-              <input class="form-control" type="text" name="foto" id="foto" value="<?= $foto ?>">
               <br>
 
               <label for="status">Status:</label>
