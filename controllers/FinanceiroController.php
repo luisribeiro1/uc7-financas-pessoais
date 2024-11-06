@@ -17,11 +17,26 @@ class FinanceiroController{
     }
 
     public function criar(){
-        echo "método criar foi criado";
+        $baseUrl = $this->url;
+        $status='
+        <option></option>
+        <option>Aprovada</option>
+        <option>Em Análise</option>
+        <option>Cancelada</option>
+        ';
+        $acao = "criar";
+        require "views/FinanceiroForm.php";
     }
 
     public function atualizar(){
-        echo "método atualizar foi criado";
+        $data = $_POST['data'];
+        $descricao = $_POST['descricao'];
+        $valor =$_POST['valor'];
+        $deb_cred = $_POST['deb_cred'];
+        $status = $_POST['status'];
+
+        $this->financeiroModel->insert($data, $descricao, $valor, $deb_cred, $status);
+        header("location: " . $this->url . "/financas");
     }
 
     public function cancelar($id){
