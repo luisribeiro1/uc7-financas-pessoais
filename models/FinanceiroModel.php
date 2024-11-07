@@ -38,14 +38,19 @@ class Financeiro
     
         public function insert($id_financeiro, $data, $descricao, $valor, $deb_cred, $status){
             $sql = $this->db->prepare(
-                "INSERT INTO financeiro_pessoal (id_financeiro, data, descricao, valor, deb_cred, status)
-                VALUES(?,?,?,?,?,?");
+                "INSERT INTO financeiro_pessoal(id_financeiro, data, descricao, valor, deb_cred, status)
+                VALUES(?,?,?,?,?,?)");
                 return $sql->execute([$id_financeiro,$data,$descricao,$valor,$deb_cred,$status]);      
         }
 
+        public function update($id_financeiro, $data, $descricao, $valor, $deb_cred, $status){
+            $sql = $this->db->prepare("UPDATE financeiro_pessoal SET data=?,descricao=?,valor=?,deb_cred=? status=? WHERE id_financeiro=?");
+            return $sql->execute([$data,$descricao,$valor,$deb_cred,$status,$id_financeiro]);  
+        }
+
     public function cancelar($id_financeiro){
-        $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status = cancelado WHERE id_financeiro =?");
-        return $sql->execute([$status,$id_financeiro]);
+        $sql = $this->db->prepare("UPDATE financeiro_pessoal SET status = ?  WHERE id_financeiro =?");
+        return $sql->execute(['cancelado',$id_financeiro]);
     }    
 
 }    

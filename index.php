@@ -20,10 +20,12 @@ $controlador = isset($segmentos[0])
     : "financeiro";
 
 $metodo = isset($segmentos[1])
+    && $segmentos[1] != ""
     ? $segmentos[1]
     : "index";
 
 $identificador = isset($segmentos[2])
+    && $segmentos[1] != ""
     ? $segmentos[2]
     : null;
 

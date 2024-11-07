@@ -36,7 +36,13 @@ class FinanceiroController{
     public function criar(){
         $baseUrl = $this->url;
 
-        echo "Método criar() foi chamado";
+        $data = "";
+        $descricao = "";
+        $valor = "";
+        $status = "";
+        $deb_cred = "<option></option>
+        <option>Débito</option>
+        <option>Crédito</option>";
         
         $acao = "criar";
         require "views/FinanceiroForm.php";
@@ -44,18 +50,36 @@ class FinanceiroController{
 
     public function atualizar(){
         
-        echo "Método atualizar() foi chamado";
+        //$id_financeiro = $_POST["id_financeiro"];
+        $data = $_POST["data"];
+        $descricao = $_POST["descricao"];
+        $valor = $_POST["valor"];
+        $deb_cred = $_POST["deb_cred"];
+
+        $status = isset($_POST["status"]) ? true : false;
 
         $acao = $_POST["acao"];
 
+        if($acao=="editar"){
+            $id_financeiro = $_POST["id_financeiro"];
+            $this->financeiroModel->update($data,$descricao,$valor,$deb_cred,$status,$id_financeiro);
+        }else{
+            $id_financeiro = $_POST["id_financeiro"];
+            $this->financeiroModel->insert($id_financeiro,$data,$descricao,$valor,$deb_cred,$status);
+        }
+     
+
+        header("location: ".$this->url."financeiro");
+
     }
 
-    public function cancelar() {
-        # Executa o método delete da classe de Model
-        // $this->financeiroModel->delete();
-        echo "Método cancelar() foi chamado";
+    public function cancelar($id_financeiro) {
+        
+        $this->financeiroModel->cancelar($id_financeiro);
+        $baseUrl = $this->url;
+        
         # Redirecionar o usuário para a listagem de transações
-        header("location: ".$this->url."/financeiro");
+        header("location: ".$this->url."financeiro");
     }
 
 }
