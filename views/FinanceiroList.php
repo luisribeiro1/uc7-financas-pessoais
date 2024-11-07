@@ -1,6 +1,11 @@
+
+
 <!-- views/FinanceiroList.php -->
 
-<h1>Registros Financeiros</h1>
+<h1>REGISTROS FINANCEIROS</h1>
+<div class="mb-3 text-end">
+    <a href="index.php?rota=adicionar" class="btn btn-success">Adicionar Novo Registro</a>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -8,33 +13,42 @@
             <th>Descrição</th>
             <th>Débito</th>
             <th>Crédito</th>
-            <th>Cancelar</th>
+            <th>Status</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
         <?php if (!empty($transacoes)): ?>
             <?php foreach ($transacoes as $registro): ?>
                 <tr>
-                    <!-- Exibe a data no formato d/m/Y -->
                     <td><?php echo date("d/m/Y", strtotime($registro['data'])); ?></td>
-                    
-                    <!-- Escapa a descrição para evitar problemas de segurança -->
                     <td><?php echo htmlspecialchars($registro['descricao']); ?></td>
-                    
-                    <!-- Condicional para mostrar valor como Débito ou Crédito -->
                     <td><?php echo ($registro['deb_cred'] === 'debito') ? number_format($registro['valor'], 2, ',', '.') : '-'; ?></td>
                     <td><?php echo ($registro['deb_cred'] === 'credito') ? number_format($registro['valor'], 2, ',', '.') : '-'; ?></td>
-                    
-                    <!-- Botão de Cancelar com link para a ação cancelar -->
                     <td>
-                        <a href="[[base-url]]/financeiro/cancelar/<?php echo $registro['id_financeiro']; ?>" class="btn btn-danger btn-sm">X</a>
+                        <span style="
+                            color: <?php 
+                                echo $registro['status'] === 'cancelado' ? 'red' : 
+                                     ($registro['status'] === 'pago' ? 'green' : 
+                                     ($registro['status'] === 'pendente' ? 'orange' : 'black')); 
+                            ?>;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            
+                        ">
+                            <?php echo htmlspecialchars($registro['status']); ?>
+                        </span>
+                    </td>
+                    <td>
+                        <a href="index.php?rota=atualizar&id=<?php echo $registro['id_financeiro']; ?>" class="btn btn-primary btn-sm">Atualizar</a>
+                        <?php if ($registro['status'] === 'pago' || $registro['status'] === 'pendente'): ?>
+                            <a href="index.php?rota=cancelar&id=<?php echo $registro['id_financeiro']; ?>" class="btn btn-warning btn-sm">Cancelar</a>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
-            <!-- Mensagem caso não haja registros -->
-            <tr><td colspan="5">Nenhum registro encontrado.</td></tr>
+            <tr><td colspan="6" class="text-center">Nenhum registro encontrado.</td></tr>
         <?php endif; ?>
     </tbody>
 </table>
-
