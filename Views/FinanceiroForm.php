@@ -56,6 +56,17 @@
 
             </form>
         </div>
+
+        <footer class="container mt-5">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <small>&copy; 2024 | Finanças Pessoais</small>
+            </div>
+            <div class="col-md-6 text-end">
+                <small>Feito com Bootstrap</small>
+            </div>
+        </div>
+      </footer>
     </div>
   </section>
 </main>
